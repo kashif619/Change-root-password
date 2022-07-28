@@ -1,0 +1,11 @@
+---
+- name: Changing Root Password
+  hosts: sandeep
+  become: true
+  tasks:
+  - name: Change root password
+    user:
+      name: root
+      password: "{{ 'kashif' | password_hash('sha512') }}"
+  - debug:
+      msg: "Successfully Changed"
